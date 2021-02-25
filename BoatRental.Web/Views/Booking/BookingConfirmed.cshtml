@@ -1,0 +1,10 @@
+﻿@model BoatRental.Domain.Models.Booking
+@{
+    ViewBag.Title = "BookingConfirmed";
+}
+
+<h2>Tack för din bokning!</h2>
+
+<h3>Din bokningsnummer är ( #<strong>@Model.Id</strong> ), denna behöver du för att avboka.</h3>
+<br />
+<button class="btn btn-info">@Html.ActionLink("Tillbaka", "Index", "Boat")</button>

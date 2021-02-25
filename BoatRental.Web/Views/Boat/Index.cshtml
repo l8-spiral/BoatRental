@@ -1,0 +1,48 @@
+﻿@model List<BoatRental.Domain.Models.Boat>
+@{
+    ViewBag.Title = "Båtar";
+}
+
+<h2>Tillgängliga båtar</h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Namn</th>
+                        <th scope="col">Pris(h)</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var boat in Model.Where(x => x.IsRented == false))
+                    {
+                        <tr>
+                            <th scope="row">@boat.Id</th>
+                            <td>@boat.Name</td>
+                            <td>@boat.PricePerHour</td>
+                            <td>@boat.Category.ToString()</td>
+                            <td>
+
+                                @using (Html.BeginForm("ViewBoat", "Boat", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="BoatId" id="BoatId" value="@boat.Id">
+                                    <input type="submit" value="Välj" class="btn btn-primary" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Lägg till båt", "Create")
+    </div>
+</div>

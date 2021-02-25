@@ -1,0 +1,51 @@
+﻿@model BoatRental.Domain.Models.Booking
+@{
+    ViewBag.Title = "Boka";
+}
+
+<h2>Tillgänglig båt</h2>
+
+@using (Html.BeginForm("ConfirmBooking", "Booking", Model))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Namn</th>
+                            <th scope="col">Båt Kategori</th>
+                            <th scope="col">Pris(h)</th>
+                            <th scope="col">Personnummer</th>
+                            <th scope="col">Antal timmar</th>
+                            <th scope="col">Datum för återlämning</th>
+                            <th scope="col">Total pris</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">@Model.Boat.Id</th>
+                            <td>@Model.Boat.Name</td>
+                            <td>@Model.Boat.Category.ToString()</td>
+                            <td>@Model.Boat.PricePerHour</td>
+                            <td>@Model.CustmerSSN</td>
+                            <td>@Model.EstimatedHours</td>
+                            <td>@Model.EstimatedEndDate</td>
+                            <td>@Model.EstimatedPrice SEK</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-11 col-md-11">
+                <input type="submit" value="Boka" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

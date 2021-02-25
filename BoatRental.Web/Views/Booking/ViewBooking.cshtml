@@ -1,0 +1,57 @@
+﻿@model BoatRental.Domain.Models.Booking
+@{
+    ViewBag.Title = "Boka";
+}
+
+<h2>Hantera bokning</h2>
+
+@using (Html.BeginForm("EndBooking", "Booking", Model))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nummer</th>
+                            <th scope="col">Namn</th>
+                            <th scope="col">Båt Kategori</th>
+                            <th scope="col">Pris(h)</th>
+                            <th scope="col">Personnummer</th>
+                            <th scope="col">Uthyrningsdatum</th>
+                            <th scope="col">Reserverade timmar</th>
+                            <th scope="col">Datum för återlämning</th>
+                            <th scope="col">Reserverat Pris</th>
+                            <th scope="col">Återlämnings datum</th>
+                            <th scope="col">Total belopp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">@Model.Id</th>
+                            <td>@Model.Boat.Name</td>
+                            <td>@Model.Boat.Category.ToString()</td>
+                            <td>@Model.Boat.PricePerHour</td>
+                            <td>@Model.CustmerSSN</td>
+                            <td>@Model.StartDate.ToString("MM/dd/yyyy H:mm")</td>
+                            <td>@Model.EstimatedHours</td>
+                            <td>@Model.EstimatedEndDate.ToString("MM/dd/yyyy H:mm")</td>
+                            <td>@Model.EstimatedPrice SEK</td>
+                            <td>@Model.RecievedDate</td>
+                            <td>@Model.RecievedPrice SEK</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-11 col-md-11">
+                <input type="submit" value="Avsluta" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

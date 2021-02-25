@@ -1,0 +1,22 @@
+﻿@model BoatRental.Domain.Models.Booking
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hantera Bookning</h2>
+<h3>Nedna kan du visa och återlämna båten.</h3>
+
+@using (Html.BeginForm("ViewBooking", "Booking", FormMethod.Post))
+{
+    <strong class="text-danger">@Html.ValidationMessageFor(m => m.Id)</strong>
+    <div class="input-group mb-3">
+
+        <input type="number" class="form-control" placeholder="Bokningsnummer..." aria-label="Bokningsnummer..." aria-describedby="basic-addon2" name="bookingId" data-val-number="The field EstimatedHours must be a number.">
+        <div class="input-group-append">
+            <br />
+            <button class="btn btn-outline-secondary" type="submit">Återlämna</button>
+
+        </div>
+    </div>
+
+}
